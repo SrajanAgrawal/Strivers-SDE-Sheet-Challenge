@@ -1,0 +1,26 @@
+int upperBound(vector<int> &arr, int x, int n){
+
+	//INITIALIZE THE START AND END TO IMPLEMENT BINARY SEARCH
+	int start = 0;
+	int end = n-1;
+
+	//IF THE ARR[0] > X TO RETURN 0 KR DO BECAUSE [5,6,7,8] AND X = 4;
+	if(arr[0] > x) return 0;
+	//IF ARR[N-1] <= X TO RETURN N KR DO BECAUSE [5,6,7,8] AND X = 8 YA X = 9;
+	else if(arr[n-1] <= x) return n;
+
+
+	// Initialize the mid element
+	int mid = 0;
+	//Run a loop until start<=end (Main condition for binary search)
+	while(start<=end){
+		mid = start + (end-start)/2;
+		if(arr[mid] <= x && arr[mid+1] > x) return mid+1;
+		else if(arr[mid] > x && arr[mid-1] < x) return mid;
+
+		else if(arr[mid] < x) start = mid+1;
+		else end = mid-1;
+
+	}
+	return mid+1;
+}

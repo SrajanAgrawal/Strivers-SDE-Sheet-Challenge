@@ -1,0 +1,40 @@
+//Linear Search Se (1st approach) O(n);
+
+
+
+// pair<int, int> getFloorAndCeil(int arr[], int n, int x) {
+
+// 	int floor = -1;
+// 	int ceil = INT_MAX;
+// 	for(int i=0;i<n;i++){
+// 		if(arr[i]<=x)  floor = max(floor, arr[i]);
+// 		if(arr[i]>=x) ceil = min(ceil, arr[i]);
+// 	}
+// 	if(ceil == INT_MAX) ceil = -1;
+// 	return {floor,ceil};
+// }
+
+
+//Binary Search Se (end Approach) O(logn);
+
+pair<int,int> getFloorAndCeil(int arr[], int n, int x){
+	sort(arr,arr+n);
+	// [3,4,4,7,8,10]
+	int start = 0, end = n-1;
+	int mid = 0;
+
+    //handling if the x is not in the array and it is smaller that first element.
+	if(arr[0]>x) return {-1,arr[0]};
+
+    //handling if array is present or not if at end. x = 10+ and arr = [3,4,4,5,8,10] 
+	else if(arr[n-1]<=x) return {arr[n-1],-1};
+
+    //binary search logic
+    while(start<=end){
+		mid = start + (end-start)/2;
+		if(arr[mid] == x) return {x,x};
+		else if(arr[mid] > x) end = mid-1;
+		else start = mid+1;
+	}
+	return {arr[end],arr[start]};
+}
