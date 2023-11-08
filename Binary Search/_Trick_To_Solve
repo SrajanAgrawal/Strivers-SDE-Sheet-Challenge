@@ -1,0 +1,32 @@
+Listen Binary Search questions are very straight forward. 
+
+steps to follow:
+1) start 
+2) end
+3) while(start<=end) {
+    do operations
+}
+
+
+
+Trick:
+1) IF in the question it is given that the array is sorted then make sure to think about binary search.
+2) If you know the range in which your answer can be somewhat like [mn,mx] then make sure to optimize this using binary search.
+3) there is a technique like if you are solving the problems then may be you need the value of mid as ans so make sure to store it prior.
+for example; 
+
+
+while(mn<=mx){
+    mid = mn + (mx-mn)/2;
+    if(check(weights, mid, days)) {
+        mx = mid-1;
+        ans = mid; // store the answers value.
+    }
+    else{
+        mn = mid+1;
+    }
+}
+return (ans);
+
+
+4) If you want to find min ka max or max ka min then you can use Binary Search.
